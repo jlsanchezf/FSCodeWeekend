@@ -77,6 +77,9 @@ $port = $mysql_config["port"];
 $username = $mysql_config["username"];
 $password = $mysql_config["password"];
 
+print "<PRE>";
+print_r ($services_json);
+
 // initialize Eloquent ORM
 $capsule = new Capsule;
  
