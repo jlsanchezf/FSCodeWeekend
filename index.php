@@ -68,7 +68,7 @@ $cadenaENV = '{
 
 
 // get MySQL service configuration from Bluemix
-$services = (!isset ($cadenaENV)) ? getenv("VCAP_SERVICES") : $cadenaENV;
+$services = (trim (getenv("VCAP_SERVICES")) != "") ? getenv("VCAP_SERVICES") : $cadenaENV;
 $services_json = json_decode($services, true);
 $mysql_config = $services_json["cleardb"][0]["credentials"];
 $db = $mysql_config["name"];
