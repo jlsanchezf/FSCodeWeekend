@@ -1,0 +1,25 @@
+
+
+
+
+/* hacer esto por cada inmueble */
+
+SELECT @latitud := latitud, @longitud := longitud, @idinmueble := idinmueble FROM inmuebles WHERE idinmueble = 1;
+
+INSERT INTO distancias
+SELECT 
+  @idinmueble, idinmueble, 
+   ( 3959 * acos( cos( radians(@latitud) ) * cos( radians( i.latitud ) ) 
+   * cos( radians(i.longitud) - radians(@longitud)) + sin(radians(@latitud)) 
+   * sin( radians(i.latitud)))) * 1000 AS distance 
+FROM inmuebles i
+having distance != 0
+
+
+/* Creamos la vista de inmuebles _ distancias */
+
+create or replace view inmuebles_distancias as
+select  d.idInmueble, d.idCercano, d.distancia, i.calle,
+i.portal, i.piso, i.letra, i.habitaciones, i.banos, i.superficie, i.precio, i.latitud, i.longitud
+  from distancias d
+left join inmuebles i on d.idCercano = i.idInmueble;

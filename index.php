@@ -18,9 +18,16 @@ require __DIR__ . '/api/v1.php';
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 
-// create model for Eloquent ORM mapped to REST API resource
 class Product extends Illuminate\Database\Eloquent\Model {
   public $timestamps = false;
+}
+
+class Inmuebles extends Illuminate\Database\Eloquent\Model {
+	public $timestamps = false;
+}
+
+class InmueblesDistancias extends Illuminate\Database\Eloquent\Model {
+	public $timestamps = false;
 }
 
 
@@ -102,7 +109,8 @@ Server::create('/v1', new API\V1) //base entry points `/admin`
 		->addGetRoute('todos', 'obtenerInmuebles') 						// => /v1/inmueble/todos/
 		->addGetRoute('([0-9]+)', 'obtenerInmueble') 					// => /v1/inmueble/:idInmueble
 		->addGetRoute('([0-9]+)/cercanos', 'obtenerCercanos') 			// => /v1/inmueble/:idInmueble/cercanos
-	->done()
+		->addGetRoute('([0-9]+)/cercanos/([0-9]+)', 'obtenerCercanosDistancia') // => /v1/inmueble/:idInmueble/cercanos/:distancia
+		->done()
 	
 	->addSubController('prestamo', new API\V1\Prestamos) //
 		->addGetRoute('([0-9]+)/([0-9]+)/([0-9]+)', 'calcularPrestamo') // => /v1/prestamo/importe/meses/interes

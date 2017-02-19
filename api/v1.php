@@ -59,7 +59,7 @@ class Prestamos {
 class Inmuebles {
 
 	function obtenerInmuebles () {
-		$product = \Product::all();
+		$product = \Inmuebles::all();
 		return $product->toArray();
 	}
 	
@@ -70,9 +70,17 @@ class Inmuebles {
 	}
 	
 	function obtenerCercanos ($idInmueble) {
-		$product = \Product::find(array(2,3));
+		
+		$product = \InmueblesDistancias::query()->where("idInmueble", "=", $idInmueble)->get();
 		return $product->toArray();
 	}
+	
+	function obtenerCercanosDistancia ($idInmueble, $distancia) {
+	
+		$product = \InmueblesDistancias::query()->where("idInmueble", "=", $idInmueble)->where ("distancia", "<", $distancia)->get();
+		return $product->toArray();
+	}
+	
 	
 }
 
