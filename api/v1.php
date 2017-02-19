@@ -65,7 +65,7 @@ class Inmuebles {
 	
 	
 	function obtenerInmueble ($idInmueble) {
-		$product = \Product::find($idInmueble);
+		$product = \Inmuebles::query()->where("idInmueble", "=", $idInmueble)->get();
 		return $product->toArray();
 	}
 	
