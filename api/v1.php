@@ -4,8 +4,7 @@ namespace API;
 
 class V1 {
 	
-	public function holaMundo () {
-		print "hola mundo!";
+	public function holaMundo () {		
 		return "hola Mundo!";
 	}
 	
