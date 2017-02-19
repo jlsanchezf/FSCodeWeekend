@@ -1,0 +1,4 @@
+ {
+ "ADMIN_EMAIL":  "joseluissanchezfernandez@gmail.com",
+ "PHP_EXTENSIONS": ["pdo", "mysqli", "pdo_mysql", "mysql"]
+ }
