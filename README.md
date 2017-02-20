@@ -15,3 +15,7 @@ eye-catching graphic.
 
 Finally, consider defining some sprints and work items in Track & Plan to give 
 interested developers a sense of your cadence and upcoming enhancements.
+
+
+index.php -> definir las rutas del webservice
+api/v1.php	-> clases de ejemplo para acceder a la base de datos
